@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/arceos-org/app-msgqueue
+	branch = main
+	commit = 0f9f5a828abab846b929d9447edeb643c9b95589
+	parent = 0af43f7bcaba965ab182d1f845dcd0adf6b1b69d
+	method = merge
+	cmdver = 0.4.9

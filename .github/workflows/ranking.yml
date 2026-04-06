@@ -1,0 +1,210 @@
+name: Ranking
+
+on: [push]
+
+env:
+  CARGO_TERM_COLOR: always
+  NO_COLOR: 1
+
+jobs:
+  # ──────────────────────────────────────────────
+  # 5 个练习的 exercise 测试
+  # ──────────────────────────────────────────────
+  test-printcolor:
+    name: Test exercise-printcolor
+
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/chyyuu/tangram-crates:latest
+    defaults:
+      run:
+        working-directory: exercise-printcolor
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache cargo registry
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-printcolor-cargo-${{ hashFiles('exercise-printcolor/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-printcolor-cargo-
+      - name: Run printcolor exercise tests
+        run: bash scripts/test.sh
+
+  test-hashmap:
+    name: Test exercise-hashmap
+
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/chyyuu/tangram-crates:latest
+    defaults:
+      run:
+        working-directory: exercise-hashmap
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache cargo registry
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-hashmap-cargo-${{ hashFiles('exercise-hashmap/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-hashmap-cargo-
+      - name: Run hashmap exercise tests
+        run: bash scripts/test.sh
+
+  test-altalloc:
+    name: Test exercise-altalloc
+
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/chyyuu/tangram-crates:latest
+    defaults:
+      run:
+        working-directory: exercise-altalloc
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache cargo registry
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-altalloc-cargo-${{ hashFiles('exercise-altalloc/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-altalloc-cargo-
+      - name: Run altalloc exercise tests
+        run: bash scripts/test.sh
+
+  test-ramfs-rename:
+    name: Test exercise-ramfs-rename
+
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/chyyuu/tangram-crates:latest
+    defaults:
+      run:
+        working-directory: exercise-ramfs-rename
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache cargo registry
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-ramfs-rename-cargo-${{ hashFiles('exercise-ramfs-rename/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-ramfs-rename-cargo-
+      - name: Run ramfs-rename exercise tests
+        run: bash scripts/test.sh
+
+  test-sysmap:
+    name: Test exercise-sysmap
+
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/chyyuu/tangram-crates:latest
+    defaults:
+      run:
+        working-directory: exercise-sysmap
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache cargo registry
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-sysmap-cargo-${{ hashFiles('exercise-sysmap/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-sysmap-cargo-
+      - name: Run sysmap exercise tests
+        run: bash scripts/test.sh
+
+  # ──────────────────────────────────────────────
+  # 汇总结果 → 生成 JSON → 上传排行榜
+  # ──────────────────────────────────────────────
+  deploy:
+    name: Deploy ranking
+    needs: [test-printcolor, test-hashmap, test-altalloc, test-ramfs-rename, test-sysmap]
+    # 即使部分练习失败也继续执行，以便记录已通过的练习；排除模板仓库本身
+    if: always() && github.repository != 'LearningOS/tg-arceos-tutorial'
+    runs-on: ubuntu-latest
+    steps:
+      # 汇总各练习测试结果，生成 JSON
+      - name: Generate result JSON
+        id: compute
+        run: |
+          PASSED=0
+          TOTAL=5
+
+          PRINTCOLOR_PASS=false; HASHMAP_PASS=false; ALTALLOC_PASS=false; RAMFS_RENAME_PASS=false; SYSMAP_PASS=false
+
+          if [ '${{ needs.test-printcolor.result }}' = 'success' ]; then PRINTCOLOR_PASS=true; PASSED=$((PASSED+1)); fi
+          if [ '${{ needs.test-hashmap.result }}' = 'success' ]; then HASHMAP_PASS=true; PASSED=$((PASSED+1)); fi
+          if [ '${{ needs.test-altalloc.result }}' = 'success' ]; then ALTALLOC_PASS=true; PASSED=$((PASSED+1)); fi
+          if [ '${{ needs.test-ramfs-rename.result }}' = 'success' ]; then RAMFS_RENAME_PASS=true; PASSED=$((PASSED+1)); fi
+          if [ '${{ needs.test-sysmap.result }}' = 'success' ]; then SYSMAP_PASS=true; PASSED=$((PASSED+1)); fi
+
+          SCORE=$((PASSED * 100))
+
+          # 生成结果 JSON
+          jq -n \
+            --arg user "${{ github.actor }}" \
+            --arg repo "${{ github.repository }}" \
+            --arg ref "${{ github.ref_name }}" \
+            --arg sha "${{ github.sha }}" \
+            --arg time "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            --argjson printcolor $PRINTCOLOR_PASS \
+            --argjson hashmap $HASHMAP_PASS \
+            --argjson altalloc $ALTALLOC_PASS \
+            --argjson ramfs_rename $RAMFS_RENAME_PASS \
+            --argjson sysmap $SYSMAP_PASS \
+            --argjson score $SCORE \
+            --argjson total_score 500 \
+            '{
+              user: $user,
+              repo: $repo,
+              ref: $ref,
+              sha: $sha,
+              time: $time,
+              exercises: { printcolor: $printcolor, hashmap: $hashmap, altalloc: $altalloc, "ramfs-rename": $ramfs_rename, sysmap: $sysmap },
+              score: $score,
+              total_score: $total_score
+            }' | tee result.json
+
+          echo "passed=${PASSED}" >> $GITHUB_OUTPUT
+          echo "score=${SCORE}" >> $GITHUB_OUTPUT
+
+          echo ""
+          echo "===== Summary ====="
+          echo "Passed: ${PASSED}/${TOTAL}  Score: ${SCORE}/500"
+
+      # 上传分数到排行榜 API
+      - name: Upload score
+        run: |
+          score=${{ steps.compute.outputs.score }}
+          echo "Score: $score / 500"
+
+          score_json=$(jq -n \
+            --arg channel github \
+            --argjson courseId ${{ secrets.TG_ARCEOS_2026_SPRING_COURSE_ID }} \
+            --arg name "${{ github.actor }}" \
+            --argjson score $score \
+            --argjson totalScore 500 \
+            '{channel: $channel, courseId: $courseId, name: $name, score: $score, totalScore: $totalScore}')
+
+          response=$(curl -X POST ${{ secrets.COURSE_POST_API }} \
+            -H "accept: application/json;charset=utf-8" \
+            -H "Content-Type: application/json" \
+            -H "token: ${{ secrets.TG_ARCEOS_2026_SPRING_TOKEN }}" \
+            -d "$score_json" \
+            -v)
+
+          echo "Response: $response"
+
+          if echo "$response" | grep -q '"result":1'; then
+            echo "Success: The result field contains 1."
+          else
+            echo "Error: The result field does not contain 1."
+            exit 1
+          fi

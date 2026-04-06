@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/arceos-org/app-runlinuxapp
+	branch = main
+	commit = 28dcbb1529adeaf4767f43fe2d257d8d1b13a7fa
+	parent = e2cf38d3bc953bcd77b5aa8e010bc9289e1daca7
+	method = merge
+	cmdver = 0.4.9
