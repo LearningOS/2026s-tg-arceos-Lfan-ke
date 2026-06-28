@@ -24,4 +24,9 @@ required-features = ["xtask"]
 axstd = { version = "=0.3.0-preview.1", features = ["defplat", "alloc"], optional = true }
 clap = { version = "4", features = ["derive"], optional = true }
 
+# Provide `std::collections::HashMap` by overriding the published `axstd`
+# with a local copy that adds a `collections` module (see ./axstd).
+[patch.crates-io]
+axstd = { path = "axstd" }
+
 [profile.release]

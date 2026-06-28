@@ -1,0 +1,474 @@
+[submodule "material/async/async-std"]
+	path = material/async/async-std
+	url = https://github.com/async-rs/async-std
+[submodule "material/async/corosensei"]
+	path = material/async/corosensei
+	url = https://github.com/Amanieu/corosensei
+[submodule "material/async/futures-rs"]
+	path = material/async/futures-rs
+	url = https://github.com/rust-lang/futures-rs
+[submodule "material/async/genawaiter"]
+	path = material/async/genawaiter
+	url = https://github.com/whatisaphone/genawaiter
+[submodule "material/async/libxev"]
+	path = material/async/libxev
+	url = https://github.com/mitchellh/libxev
+[submodule "material/async/may"]
+	path = material/async/may
+	url = https://github.com/Xudong-Huang/may
+[submodule "material/async/monoio"]
+	path = material/async/monoio
+	url = https://github.com/bytedance/monoio.git
+[submodule "material/async/smol"]
+	path = material/async/smol
+	url = https://github.com/smol-rs/smol
+[submodule "material/async/tokio"]
+	path = material/async/tokio
+	url = https://github.com/tokio-rs/tokio.git
+[submodule "material/async/zap"]
+	path = material/async/zap
+	url = https://github.com/kprotty/zap
+[submodule "material/async/zigcoro"]
+	path = material/async/zigcoro
+	url = https://github.com/rsepassi/zigcoro
+[submodule "material/boot/acpica"]
+	path = material/boot/acpica
+	url = https://github.com/acpica/acpica.git
+[submodule "material/boot/barebox"]
+	path = material/boot/barebox
+	url = https://github.com/barebox/barebox
+[submodule "material/boot/coreboot"]
+	path = material/boot/coreboot
+	url = https://github.com/coreboot/coreboot.git
+[submodule "material/boot/edk2"]
+	path = material/boot/edk2
+	url = https://github.com/tianocore/edk2
+[submodule "material/boot/grub2"]
+	path = material/boot/grub2
+	url = https://git.savannah.gnu.org/git/grub.git
+[submodule "material/boot/optee_os"]
+	path = material/boot/optee_os
+	url = https://github.com/OP-TEE/optee_os
+[submodule "material/boot/pmon"]
+	path = material/boot/pmon
+	url = https://github.com/loongson-community/pmon.git
+[submodule "material/boot/rboot"]
+	path = material/boot/rboot
+	url = https://github.com/rcore-os/rboot.git
+[submodule "material/boot/u-boot"]
+	path = material/boot/u-boot
+	url = https://github.com/u-boot/u-boot.git
+[submodule "material/core/BareMetal"]
+	path = material/core/BareMetal
+	url = https://github.com/ReturnInfinity/BareMetal.git
+[submodule "material/core/DragonOS"]
+	path = material/core/DragonOS
+	url = git@github.com:DragonOS-Community/DragonOS.git
+[submodule "material/core/NoAxiomOS"]
+	path = material/core/NoAxiomOS
+	url = https://github.com/NoAxiom/NoAxiom-OS.git
+[submodule "material/core/StarryOS"]
+	path = material/core/StarryOS
+	url = git@github.com:Starry-OS/StarryOS.git
+[submodule "material/core/Theseus"]
+	path = material/core/Theseus
+	url = https://github.com/theseus-os/Theseus.git
+[submodule "material/core/TornadoOS"]
+	path = material/core/TornadoOS
+	url = https://github.com/HUST-OS/tornado-os.git
+[submodule "material/core/android-kernel"]
+	path = material/core/android-kernel
+	url = https://android.googlesource.com/kernel/common
+[submodule "material/core/arceos"]
+	path = material/core/arceos
+	url = git@github.com:arceos-org/arceos.git
+[submodule "material/core/asterinas"]
+	path = material/core/asterinas
+	url = git@github.com:asterinas/asterinas.git
+[submodule "material/core/asyncos-refs/AsyncOS-site"]
+	path = material/core/asyncos-refs/AsyncOS-site
+	url = https://github.com/AsyncOS/AsyncOS.github.io.git
+[submodule "material/core/asyncos-refs/async-kernel-documents"]
+	path = material/core/asyncos-refs/async-kernel-documents
+	url = https://github.com/async-kernel/documents.git
+[submodule "material/core/asyncos-refs/embassy_preempt"]
+	path = material/core/asyncos-refs/embassy_preempt
+	url = https://github.com/KMSorSMS/embassy_preempt.git
+[submodule "material/core/asyncos-refs/os-checker"]
+	path = material/core/asyncos-refs/os-checker
+	url = https://github.com/os-checker/os-checker.git
+[submodule "material/core/asyncos-refs/osblog"]
+	path = material/core/asyncos-refs/osblog
+	url = https://github.com/sgmarz/osblog.git
+[submodule "material/core/asyncos-refs/rCore-N"]
+	path = material/core/asyncos-refs/rCore-N
+	url = https://github.com/zflcs/rCore-N.git
+[submodule "material/core/asyncos-refs/rel4_kernel"]
+	path = material/core/asyncos-refs/rel4_kernel
+	url = https://github.com/reL4team2/rel4_kernel.git
+[submodule "material/core/asyncos-refs/taic"]
+	path = material/core/asyncos-refs/taic
+	url = https://github.com/taic-repo/taic.git
+[submodule "material/core/asyncos-refs/uintr"]
+	path = material/core/asyncos-refs/uintr
+	url = https://github.com/U-interrupt/uintr.git
+[submodule "material/core/freebsd"]
+	path = material/core/freebsd
+	url = https://github.com/freebsd/freebsd-src.git
+[submodule "material/core/fuchsia"]
+	path = material/core/fuchsia
+	url = https://fuchsia.googlesource.com/fuchsia
+[submodule "material/core/haiku"]
+	path = material/core/haiku
+	url = https://github.com/haiku/haiku.git
+[submodule "material/core/illumos"]
+	path = material/core/illumos
+	url = https://github.com/illumos/illumos-gate.git
+[submodule "material/core/jos"]
+	path = material/core/jos
+	url = https://pdos.csail.mit.edu/6.828/2018/jos.git
+[submodule "material/core/libos/HermitOS"]
+	path = material/core/libos/HermitOS
+	url = https://github.com/hermit-os/kernel.git
+[submodule "material/core/libos/rumprun"]
+	path = material/core/libos/rumprun
+	url = https://github.com/rumpkernel/rumprun.git
+[submodule "material/core/netbsd"]
+	path = material/core/netbsd
+	url = https://github.com/NetBSD/src.git
+[submodule "material/core/reactos"]
+	path = material/core/reactos
+	url = https://github.com/reactos/reactos.git
+[submodule "material/core/rust-for-linux"]
+	path = material/core/rust-for-linux
+	url = https://github.com/Rust-for-Linux/linux.git
+[submodule "material/core/seL4"]
+	path = material/core/seL4
+	url = https://github.com/seL4/seL4.git
+[submodule "material/core/tg-arceos"]
+	path = material/core/tg-arceos
+	url = https://github.com/LearningOS/2026s-tg-arceos-Lfan-ke
+[submodule "material/core/tg-rcore"]
+	path = material/core/tg-rcore
+	url = git@github.com:LearningOS/2026s-tg-rcore-Lfan-ke.git
+[submodule "material/core/unikraft"]
+	path = material/core/unikraft
+	url = https://github.com/unikraft/unikraft.git
+[submodule "material/core/xv6"]
+	path = material/core/xv6
+	url = https://github.com/mit-pdos/xv6-public.git
+[submodule "material/core/zCore"]
+	path = material/core/zCore
+	url = https://github.com/rcore-os/zCore.git
+[submodule "material/distro/YoctoPoky"]
+	path = material/distro/YoctoPoky
+	url = https://git.yoctoproject.org/poky
+[submodule "material/distro/openRuyi"]
+	path = material/distro/openRuyi
+	url = https://github.com/openRuyi-Project/openRuyi.git
+[submodule "material/distro/openwrt"]
+	path = material/distro/openwrt
+	url = https://github.com/openwrt/openwrt.git
+[submodule "material/distro/ruyi-tutorials"]
+	path = material/distro/ruyi-tutorials
+	url = https://git.openruyi.cn/openRuyi-tutorials/build-linux-system-from-scratch
+[submodule "material/fs/easyfs"]
+	path = material/fs/easyfs
+	url = https://github.com/rcore-os/easyfs.git
+[submodule "material/fs/ext2-rs"]
+	path = material/fs/ext2-rs
+	url = https://github.com/rcore-os/ext2-rs.git
+[submodule "material/fs/ext4_rs"]
+	path = material/fs/ext4_rs
+	url = https://github.com/yuoo655/ext4_rs.git
+[submodule "material/fs/fatfs"]
+	path = material/fs/fatfs
+	url = https://github.com/abbrev/fatfs.git
+[submodule "material/fs/fuse-ext2"]
+	path = material/fs/fuse-ext2
+	url = https://github.com/alperakcan/fuse-ext2.git
+[submodule "material/fs/libfuse"]
+	path = material/fs/libfuse
+	url = https://github.com/libfuse/libfuse.git
+[submodule "material/fs/linux-fs"]
+	path = material/fs/linux-fs
+	url = https://github.com/torvalds/linux.git
+[submodule "material/fs/littlefs"]
+	path = material/fs/littlefs
+	url = https://github.com/littlefs-project/littlefs.git
+[submodule "material/fs/lwext4_rust"]
+	path = material/fs/lwext4_rust
+	url = https://github.com/rcore-os/lwext4_rust.git
+[submodule "material/fs/spdk"]
+	path = material/fs/spdk
+	url = https://github.com/spdk/spdk.git
+[submodule "material/gui/hyprland"]
+	path = material/gui/hyprland
+	url = https://github.com/hyprwm/Hyprland.git
+[submodule "material/gui/libdrm"]
+	path = material/gui/libdrm
+	url = https://gitlab.freedesktop.org/mesa/drm.git
+[submodule "material/gui/libx11"]
+	path = material/gui/libx11
+	url = https://gitlab.freedesktop.org/xorg/lib/libx11.git
+[submodule "material/gui/libxcb"]
+	path = material/gui/libxcb
+	url = https://gitlab.freedesktop.org/xorg/lib/libxcb.git
+[submodule "material/gui/lvgl"]
+	path = material/gui/lvgl
+	url = https://github.com/lvgl/lvgl.git
+[submodule "material/gui/mesa"]
+	path = material/gui/mesa
+	url = https://gitlab.freedesktop.org/mesa/mesa.git
+[submodule "material/gui/sdl"]
+	path = material/gui/sdl
+	url = https://github.com/libsdl-org/SDL.git
+[submodule "material/gui/slint"]
+	path = material/gui/slint
+	url = https://github.com/slint-ui/slint.git
+[submodule "material/gui/sway"]
+	path = material/gui/sway
+	url = https://github.com/swaywm/sway.git
+[submodule "material/gui/wayland"]
+	path = material/gui/wayland
+	url = https://gitlab.freedesktop.org/wayland/wayland.git
+[submodule "material/gui/wayland-protocols"]
+	path = material/gui/wayland-protocols
+	url = https://gitlab.freedesktop.org/wayland/wayland-protocols.git
+[submodule "material/gui/wlroots"]
+	path = material/gui/wlroots
+	url = https://gitlab.freedesktop.org/wlroots/wlroots.git
+[submodule "material/gui/xserver"]
+	path = material/gui/xserver
+	url = https://gitlab.freedesktop.org/xorg/xserver.git
+[submodule "material/hal/polyhal"]
+	path = material/hal/polyhal
+	url = https://github.com/Byte-OS/polyhal.git
+[submodule "material/hyper/RVM1.5"]
+	path = material/hyper/RVM1.5
+	url = https://github.com/rcore-os/RVM1.5.git
+[submodule "material/hyper/acrn-hypervisor"]
+	path = material/hyper/acrn-hypervisor
+	url = https://github.com/projectacrn/acrn-hypervisor.git
+[submodule "material/hyper/axvisor"]
+	path = material/hyper/axvisor
+	url = git@github.com:arceos-hypervisor/axvisor.git
+[submodule "material/hyper/bao-hypervisor"]
+	path = material/hyper/bao-hypervisor
+	url = https://github.com/bao-project/bao-hypervisor.git
+[submodule "material/hyper/cloud-hypervisor"]
+	path = material/hyper/cloud-hypervisor
+	url = https://github.com/cloud-hypervisor/cloud-hypervisor.git
+[submodule "material/hyper/crosvm"]
+	path = material/hyper/crosvm
+	url = https://github.com/google/crosvm.git
+[submodule "material/hyper/firecracker"]
+	path = material/hyper/firecracker
+	url = https://github.com/firecracker-microvm/firecracker.git
+[submodule "material/hyper/hypocaust"]
+	path = material/hyper/hypocaust
+	url = https://github.com/KuangjuX/hypocaust.git
+[submodule "material/hyper/hypocaust-2"]
+	path = material/hyper/hypocaust-2
+	url = https://github.com/KuangjuX/hypocaust-2.git
+[submodule "material/hyper/kvm-bindings"]
+	path = material/hyper/kvm-bindings
+	url = https://github.com/rust-vmm/kvm-bindings.git
+[submodule "material/hyper/kvm-ioctls"]
+	path = material/hyper/kvm-ioctls
+	url = https://github.com/rust-vmm/kvm-ioctls.git
+[submodule "material/hyper/kvm-unit-tests"]
+	path = material/hyper/kvm-unit-tests
+	url = https://gitlab.com/kvm-unit-tests/kvm-unit-tests.git
+[submodule "material/hyper/kvmtool"]
+	path = material/hyper/kvmtool
+	url = https://github.com/kvmtool/kvmtool.git
+[submodule "material/hyper/machina"]
+	path = material/hyper/machina
+	url = https://github.com/gevico/machina.git
+[submodule "material/hyper/qemu"]
+	path = material/hyper/qemu
+	url = https://gitlab.com/qemu-project/qemu.git
+[submodule "material/hyper/rHyper"]
+	path = material/hyper/rHyper
+	url = https://github.com/rcore-os/rHyper.git
+[submodule "material/hyper/rcore-vmm"]
+	path = material/hyper/rcore-vmm
+	url = https://github.com/rcore-os/rcore-vmm.git
+[submodule "material/hyper/rust-hypervisor-firmware"]
+	path = material/hyper/rust-hypervisor-firmware
+	url = https://github.com/cloud-hypervisor/rust-hypervisor-firmware.git
+[submodule "material/hyper/rustyvisor"]
+	path = material/hyper/rustyvisor
+	url = https://github.com/stemnic/rustyvisor
+[submodule "material/hyper/rvvm"]
+	path = material/hyper/rvvm
+	url = https://github.com/LekKit/RVVM.git
+[submodule "material/hyper/vhost"]
+	path = material/hyper/vhost
+	url = https://github.com/rust-vmm/vhost.git
+[submodule "material/hyper/vm-memory"]
+	path = material/hyper/vm-memory
+	url = https://github.com/rust-vmm/vm-memory.git
+[submodule "material/hyper/vm-virtio"]
+	path = material/hyper/vm-virtio
+	url = https://github.com/rust-vmm/vm-virtio.git
+[submodule "material/hyper/xen"]
+	path = material/hyper/xen
+	url = https://github.com/xen-project/xen.git
+[submodule "material/libc/baselibc"]
+	path = material/libc/baselibc
+	url = https://github.com/PetteriAimonen/Baselibc.git
+[submodule "material/libc/libcxx"]
+	path = material/libc/libcxx
+	url = https://bitbucket.org/acassis/libcxx.git
+[submodule "material/libc/llvm-project"]
+	path = material/libc/llvm-project
+	url = https://github.com/llvm/llvm-project.git
+[submodule "material/libc/musl"]
+	path = material/libc/musl
+	url = git://git.musl-libc.org/musl
+[submodule "material/libc/newlib"]
+	path = material/libc/newlib
+	url = https://sourceware.org/git/newlib-cygwin.git
+[submodule "material/libc/picolibc"]
+	path = material/libc/picolibc
+	url = https://github.com/picolibc/picolibc.git
+[submodule "material/libc/relibc"]
+	path = material/libc/relibc
+	url = https://gitlab.redox-os.org/redox-os/relibc.git
+[submodule "material/libc/uclibc-ng"]
+	path = material/libc/uclibc-ng
+	url = https://repo.or.cz/uclibc-ng.git
+[submodule "material/libc/utf8proc"]
+	path = material/libc/utf8proc
+	url = https://github.com/JuliaStrings/utf8proc.git
+[submodule "material/net/dpdk"]
+	path = material/net/dpdk
+	url = https://dpdk.org/git/dpdk
+[submodule "material/net/lwip"]
+	path = material/net/lwip
+	url = https://git.savannah.nongnu.org/git/lwip.git
+[submodule "material/net/rustls"]
+	path = material/net/rustls
+	url = https://github.com/rustls/rustls.git
+[submodule "material/net/smoltcp"]
+	path = material/net/smoltcp
+	url = https://github.com/smoltcp-rs/smoltcp.git
+[submodule "material/others/SysABI"]
+	path = material/others/SysABI
+	url = https://github.com/hust-open-atom-club/SysABI
+[submodule "material/others/aya"]
+	path = material/others/aya
+	url = https://github.com/aya-rs/aya.git
+[submodule "material/others/bcc"]
+	path = material/others/bcc
+	url = https://github.com/iovisor/bcc.git
+[submodule "material/others/bpftrace"]
+	path = material/others/bpftrace
+	url = https://github.com/iovisor/bpftrace.git
+[submodule "material/others/containerd"]
+	path = material/others/containerd
+	url = https://github.com/containerd/containerd.git
+[submodule "material/others/cri-o"]
+	path = material/others/cri-o
+	url = https://github.com/cri-o/cri-o.git
+[submodule "material/others/distribution-spec"]
+	path = material/others/distribution-spec
+	url = https://github.com/opencontainers/distribution-spec.git
+[submodule "material/others/image-spec"]
+	path = material/others/image-spec
+	url = https://github.com/opencontainers/image-spec.git
+[submodule "material/others/libbpf"]
+	path = material/others/libbpf
+	url = https://github.com/libbpf/libbpf.git
+[submodule "material/others/libunwind"]
+	path = material/others/libunwind
+	url = https://github.com/libunwind/libunwind.git
+[submodule "material/others/ltp"]
+	path = material/others/ltp
+	url = https://github.com/linux-test-project/ltp.git
+[submodule "material/others/lxc"]
+	path = material/others/lxc
+	url = https://github.com/lxc/lxc.git
+[submodule "material/others/pocl-upstream"]
+	path = material/others/pocl-upstream
+	url = https://github.com/pocl/pocl
+[submodule "material/others/pocl-vortex"]
+	path = material/others/pocl-vortex
+	url = https://github.com/vortexgpgpu/pocl
+[submodule "material/others/podman"]
+	path = material/others/podman
+	url = https://github.com/containers/podman.git
+[submodule "material/others/runc"]
+	path = material/others/runc
+	url = https://github.com/opencontainers/runc.git
+[submodule "material/others/runtime-spec"]
+	path = material/others/runtime-spec
+	url = https://github.com/opencontainers/runtime-spec.git
+[submodule "material/others/syzkaller"]
+	path = material/others/syzkaller
+	url = https://github.com/google/syzkaller.git
+[submodule "material/others/trinity"]
+	path = material/others/trinity
+	url = https://github.com/kernelslacker/trinity
+[submodule "material/others/x-kernel"]
+	path = material/others/x-kernel
+	url = https://gitee.com/openkylin/x-kernel
+[submodule "material/others/xfstests"]
+	path = material/others/xfstests
+	url = https://github.com/kdave/xfstests
+[submodule "material/rootfs/buildroot"]
+	path = material/rootfs/buildroot
+	url = https://github.com/buildroot/buildroot.git
+[submodule "material/rootfs/busybox"]
+	path = material/rootfs/busybox
+	url = https://git.busybox.net/busybox
+[submodule "material/rootfs/linux-compat-tests"]
+	path = material/rootfs/linux-compat-tests
+	url = https://github.com/rcore-os/linux-compatible-testsuit.git
+[submodule "material/rootfs/tgoskits"]
+	path = material/rootfs/tgoskits
+	url = https://github.com/rcore-os/tgoskits.git
+[submodule "material/rtos/FreeRTOS"]
+	path = material/rtos/FreeRTOS
+	url = https://github.com/FreeRTOS/FreeRTOS.git
+[submodule "material/rtos/cortex-m"]
+	path = material/rtos/cortex-m
+	url = https://github.com/rust-embedded/cortex-m.git
+[submodule "material/rtos/embassy"]
+	path = material/rtos/embassy
+	url = git@github.com:embassy-rs/embassy.git
+[submodule "material/rtos/embedded-hal"]
+	path = material/rtos/embedded-hal
+	url = https://github.com/rust-embedded/embedded-hal.git
+[submodule "material/rtos/riscv-embedded"]
+	path = material/rtos/riscv-embedded
+	url = https://github.com/rust-embedded/riscv.git
+[submodule "material/rtos/rt-thread"]
+	path = material/rtos/rt-thread
+	url = https://github.com/RT-Thread/rt-thread.git
+[submodule "material/rtos/svd2rust"]
+	path = material/rtos/svd2rust
+	url = https://github.com/rust-embedded/svd2rust.git
+[submodule "material/rtos/uC-OS2"]
+	path = material/rtos/uC-OS2
+	url = https://github.com/SiliconLabs/uC-OS2.git
+[submodule "material/rtos/uC-OS3"]
+	path = material/rtos/uC-OS3
+	url = https://github.com/SiliconLabs/uC-OS3.git
+[submodule "material/sbi/opensbi"]
+	path = material/sbi/opensbi
+	url = https://github.com/riscv-software-src/opensbi
+[submodule "material/sbi/riscv-pk"]
+	path = material/sbi/riscv-pk
+	url = https://github.com/riscv-software-src/riscv-pk.git
+[submodule "material/sbi/rustsbi"]
+	path = material/sbi/rustsbi
+	url = git@github.com:rustsbi/rustsbi.git
+[submodule "material/user/compiler-builtins"]
+	path = material/user/compiler-builtins
+	url = https://github.com/rust-lang/compiler-builtins.git
+[submodule "material/user/relibc"]
+	path = material/user/relibc
+	url = git@github.com:redox-os/relibc.git

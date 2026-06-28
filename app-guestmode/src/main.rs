@@ -186,7 +186,12 @@ fn riscv64_main() {
                         ax_println!("Guest: SBI SRST shutdown");
                         ax_println!("Shutdown vm normally!");
                     }
-                    _ => todo!(),
+                    // 本练习的 guest(/sbin/skernel) 只发起 SBI SRST(关机)，正常路径已在上面处理。
+                    // 其余 SBI 扩展(PutChar/SetTimer/Base/RemoteFence…)在该 guest 中不会出现；
+                    // 且 vmexit_handler 为单次执行、ctx 不可变（无法回写 guest 寄存器/推进 sepc）。
+                    // 若真的收到，说明 guest 行为超出预期——显式 panic 报出具体消息以便诊断，
+                    // 而非用裸 todo!() 留下无信息的 "not implemented"。
+                    other => panic!("Guest issued an unhandled SBI message: {:?}", other),
                 }
             } else {
                 panic!("bad sbi message! ");

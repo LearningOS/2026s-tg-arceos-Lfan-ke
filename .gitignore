@@ -4,3 +4,7 @@ target
 #Cargo.lock
 *.elf
 *.bin
+
+# ── 统一忽略点开头文件/目录，但保留 git 相关（.gitignore/.gitmodules/.github/.gitattributes）──
+.*
+!.git*

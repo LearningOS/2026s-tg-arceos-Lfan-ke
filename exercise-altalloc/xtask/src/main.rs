@@ -138,7 +138,9 @@ fn do_objcopy(elf: &Path, bin: &Path, objcopy_arch: &str) {
 
 /// Run the kernel image in QEMU.
 fn do_run_qemu(arch: &str, elf: &Path, bin: &Path) {
-    let mem = "128M";
+    // The LoongArch `virt` machine in QEMU requires more than 1 GiB of RAM,
+    // otherwise it refuses to start ("ram_size must be greater than 1G").
+    let mem = if arch == "loongarch64" { "2G" } else { "128M" };
     let smp = "1";
 
     let qemu = format!("qemu-system-{arch}");

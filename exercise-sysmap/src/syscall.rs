@@ -12,6 +12,7 @@ use axfs::fops::{File, OpenOptions};
 use axhal::paging::MappingFlags;
 use axhal::uspace::UserContext;
 use axsync::Mutex;
+use memory_addr::{MemoryAddr, PAGE_SIZE_4K, VirtAddr, VirtAddrRange};
 
 // ---- Architecture-specific syscall numbers ----
 
@@ -359,14 +360,83 @@ fn sys_brk(addr: usize) -> isize {
 }
 
 fn sys_mmap(
-    _addr: *mut c_void,
-    _length: usize,
-    _prot: i32,
-    _flags: i32,
-    _fd: i32,
-    _offset: isize,
+    addr: *mut c_void,
+    length: usize,
+    prot: i32,
+    flags: i32,
+    fd: i32,
+    offset: isize,
 ) -> isize {
-    unimplemented!("no sys_mmap!");
+    // Reject zero-length mappings.
+    if length == 0 {
+        return neg_errno(LinuxError::EINVAL);
+    }
+
+    // Decode the Linux `prot`/`flags` bitfields. `MappingFlags::from(prot)`
+    // already sets `MappingFlags::USER` (see the `From` impl above).
+    let prot = MmapProt::from_bits_truncate(prot);
+    let mflags = MmapFlags::from_bits_truncate(flags);
+    let map_flags = MappingFlags::from(prot);
+
+    // Page-align the requested length (round up to a whole number of pages).
+    let length = (length + PAGE_SIZE_4K - 1) & !(PAGE_SIZE_4K - 1);
+
+    // Grab the current user address space set up in `main.rs`.
+    let aspace = crate::USER_ASPACE.lock().as_ref().cloned();
+    let aspace = match aspace {
+        Some(a) => a,
+        None => return neg_errno(LinuxError::EFAULT),
+    };
+    let mut aspace = aspace.lock();
+
+    let addr = addr as usize;
+    let limit = VirtAddrRange::new(aspace.base(), aspace.end());
+
+    // Pick the target virtual region. Honor MAP_FIXED exactly; otherwise treat
+    // a non-zero `addr` as a hint and search for a free, page-aligned region.
+    let start = if mflags.contains(MmapFlags::MAP_FIXED) {
+        VirtAddr::from(addr).align_down_4k()
+    } else {
+        let hint = if addr != 0 {
+            VirtAddr::from(addr).align_down_4k()
+        } else {
+            VirtAddr::from(0x1_0000_0000)
+        };
+        match aspace.find_free_area(hint, length, limit) {
+            Some(s) => s,
+            None => return neg_errno(LinuxError::ENOMEM),
+        }
+    };
+
+    // Allocate + map zeroed pages with the requested permissions (populate so the
+    // frames exist before we copy file content in via the page table below).
+    if let Err(e) = aspace.map_alloc(start, length, map_flags, true) {
+        return neg_errno(LinuxError::from(e));
+    }
+
+    // File-backed mapping: read `length` bytes from `offset` and copy them into
+    // the freshly mapped pages. Anonymous mappings stay zero-filled.
+    if !mflags.contains(MmapFlags::MAP_ANONYMOUS) && fd >= 0 {
+        let mut buf = alloc::vec![0u8; length];
+        let read_res = with_file_fd(fd, |file| {
+            file.read_at(offset as u64, &mut buf)
+                .map_err(LinuxError::from)
+        });
+        match read_res {
+            Ok(_n) => {
+                if let Err(e) = aspace.write(start, &buf) {
+                    let _ = aspace.unmap(start, length);
+                    return neg_errno(LinuxError::from(e));
+                }
+            }
+            Err(e) => {
+                let _ = aspace.unmap(start, length);
+                return neg_errno(e);
+            }
+        }
+    }
+
+    start.as_usize() as isize
 }
 
 #[cfg(target_arch = "x86_64")]
